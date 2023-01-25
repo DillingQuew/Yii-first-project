@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\models\Article;
 use app\models\ArticleSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -68,6 +69,18 @@ class ArticleController extends Controller
     public function actionCreate()
     {
         $model = new Article();
+
+//        var_dump(Yii::$app->request->post());die;
+
+        if ($_POST['Article']) {
+            {
+//                var_dump($_POST['Article']);
+                var_dump(Yii::$app->request->post());
+                  $model->load(Yii::$app->request->post());
+                  var_dump($model->attributes);die;
+                var_dump($model->title);die;
+            }
+        }
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
