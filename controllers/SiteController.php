@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\caching\DummyCache;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -124,5 +125,9 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionTest() {
+        return $this->render('test');
     }
 }
