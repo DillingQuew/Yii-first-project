@@ -39,7 +39,7 @@ $this->title = 'My Yii Application';
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On <?= $article->date?></span>
+                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On <?= $article->getDate();?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?= (int)$article->viewed?>
                                 </ul>
@@ -70,7 +70,7 @@ $this->title = 'My Yii Application';
 
                             <div class="p-content">
                                 <a href="#" class="text-uppercase"><?= $article->title ?></a>
-                                <span class="p-date"><?= $article->date?></span>
+                                <span class="p-date"><?= $article->getDate();?></span>
 
                             </div>
                         </div>
@@ -91,7 +91,7 @@ $this->title = 'My Yii Application';
                                 </div>
                                 <div class="p-content">
                                     <a href="#" class="text-uppercase"><?= $article->title?></a>
-                                    <span class="p-date"><?= $article->date?></span>
+                                    <span class="p-date"><?= $article->getDate();?></span>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@ $this->title = 'My Yii Application';
                             <?php foreach($categories as $category):?>
                             <li>
                                 <a href="#"><?= $category->title?></a>
-                                <span class="post-count pull-right"> <?= $category->getArticles()->count();?></span>
+                                <span class="post-count pull-right"> <?= $category->getArticlesCount();?></span>
                             </li>
                             <?php endforeach; ?>
                         </ul>
