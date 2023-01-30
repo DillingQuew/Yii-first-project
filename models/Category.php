@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\data\Pagination;
 
 /**
  * This is the model class for table "category".
@@ -50,6 +51,7 @@ class Category extends \yii\db\ActiveRecord
     }
 
     public static function getAll() {
+
         return Category::find()->all();
     }
 }

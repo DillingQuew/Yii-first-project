@@ -110,6 +110,21 @@ class Article extends \yii\db\ActiveRecord
        return ArrayHelper::getColumn($selectedIds, 'id');
     }
 
+    public function articleTags() {
+        $tagsObj = $this->getTags()->select('id')->asArray()->all();
+
+        $tags = Tag::find()
+            ->where(['id' => $tagsObj])
+            ->all();
+
+//        var_dump(ArrayHelper::getColumn($tags, 'id')); die;
+//        var_dump($customer); die;
+
+//        return ArrayHelper::getColumn($tags, 'id');
+          return $tags;
+    }
+
+
     public function saveTags($tags) {
         if (is_array($tags)) {
             $this->clearCurrentTags();
@@ -127,7 +142,7 @@ class Article extends \yii\db\ActiveRecord
         return Yii::$app->formatter->asDate($this->date);
     }
 
-    public static function getAll($pageSize = 1) {
+    public static function getAll($pageSize = 6) {
         $query = Article::find();
         $countQuery = clone $query;
         $pagination = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>$pageSize]);

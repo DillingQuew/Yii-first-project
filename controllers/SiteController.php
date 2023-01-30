@@ -81,7 +81,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Login action
      *
      * @return Response|string
      */
@@ -146,12 +146,36 @@ class SiteController extends Controller
         return $this->render('test');
     }
 
-    public function actionView() {
-        return $this->render('single');
+    public function actionView($id) {
+        $article = Article::findOne($id);
+        $tags = $article->articleTags();
+//
+//        $popular = Article::getPopular();
+//        $recent = Article::getRecent();
+//        $categories = Category::getAll();
+        return $this->render('single',
+            ['article'=>$article,
+            'tags'=>$tags
+            ]);
     }
 
-    public function actionCategory() {
+    public function actionCategory($id) {
 
-        return $this->render('category');
+        $query = Article::find()->where(['category_id'=>$id]);
+        $countQuery = clone $query;
+        $pagination = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>6]);
+        $articles = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        $data['articles'] = $articles;
+        $data['pagination'] = $pagination;
+
+
+        return $this->render('category',
+        [
+            'articles'=>$data['articles'],
+            'pagination' => $data['pagination']
+        ]);
     }
 }
