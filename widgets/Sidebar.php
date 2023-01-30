@@ -21,7 +21,7 @@ class Sidebar extends Widget
         $popular = Article::getPopular();
         $recent = Article::getRecent();
         $categories = Category::getAll();
-        return $this->render('@app/views/widgets/sidebar', [
+        return $this->render('/widgets/sidebar', [
             'popular'=>$popular,
             'recent'=>$recent,
             'categories'=>$categories
