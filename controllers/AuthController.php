@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use app\models\LoginForm;
+use app\models\SingupForm;
 use app\models\User;
 use Yii;
 use yii\web\Controller;
@@ -21,7 +22,7 @@ class AuthController extends Controller {
         }
 
         $model->password = '';
-        return $this->render('/site/login', [
+        return $this->render('/auth/login', [
             'model' => $model,
         ]);
     }
@@ -43,6 +44,19 @@ class AuthController extends Controller {
         Yii::$app->user->logout();
 //        Yii::$app->user->login($user);
        echo (Yii::$app->user->isGuest)  ? 'Пользователь не авторизирован' : "Админ";
+    }
+
+    public function actionSingup() {
+        $model = new SingupForm();
+
+        if(Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            if($model->signup()) {
+                return $this->redirect(['auth/login']);
+            }
+        }
+
+        return $this->render('singup', ['model'=>$model]);
     }
 
 }
