@@ -15,7 +15,7 @@ use yii\web\IdentityInterface;
  * @property int|null $isAdmin
  * @property string|null $photo
  *
- * @property Comment[] $comments
+ * @property Comment[] $comment
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -98,6 +98,25 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function create() {
         return $this->save(false);
+    }
+
+    public function getImage() {
+        return $this->photo;
+    }
+
+    public function saveFromVk($uid, $name, $photo){
+        $user = User::findOne($uid);
+
+        if($user) {
+            return Yii::$app->user->login($user);
+        }
+
+        $this->id = $uid;
+        $this->name = $name;
+        $this->photo = $photo;
+        $this->create();
+
+        return Yii::$app->user->login($this);
     }
 
 }

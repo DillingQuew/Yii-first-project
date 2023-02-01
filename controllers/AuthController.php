@@ -46,6 +46,13 @@ class AuthController extends Controller {
        echo (Yii::$app->user->isGuest)  ? 'Пользователь не авторизирован' : "Админ";
     }
 
+    public function actionLoginVk($uid, $first_name, $photo) {
+        $user = new User();
+        if($user->saveFromVk($uid, $first_name, $photo)) {
+            return $this->redirect(['site/index']);
+        }
+    }
+
     public function actionSingup() {
         $model = new SingupForm();
 

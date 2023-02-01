@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Article;
 use app\models\Category;
+use app\models\CommentForm;
 use Yii;
 use yii\caching\DummyCache;
 use yii\data\Pagination;
@@ -120,14 +121,16 @@ class SiteController extends Controller
 
     public function actionView($id) {
         $article = Article::findOne($id);
+        $comments = $article->getArticleComments();
+        $commentForm = new CommentForm();
         $tags = $article->articleTags();
-//
-//        $popular = Article::getPopular();
-//        $recent = Article::getRecent();
-//        $categories = Category::getAll();
+
+
         return $this->render('single',
             ['article'=>$article,
-            'tags'=>$tags
+            'tags'=>$tags,
+            'comments'=>$comments,
+            'commentForm'=>$commentForm
             ]);
     }
 
@@ -141,5 +144,18 @@ class SiteController extends Controller
             'articles'=>$data['articles'],
             'pagination' => $data['pagination']
         ]);
+    }
+
+    public function actionComment($id) {
+        $model = new CommentForm();
+
+        if(Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+            if($model->saveComment($id)) {
+                Yii::$app->getSession()->setFlash('comment', 'Your comment will be added soon!');
+                return $this->redirect(['site/view', 'id'=>$id]);
+            }
+
+        }
     }
 }
