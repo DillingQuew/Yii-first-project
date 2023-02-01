@@ -44,6 +44,7 @@ class Article extends \yii\db\ActiveRecord
             [['date'], 'date', 'format'=>'php:Y-m-d'],
             [['date'], 'default', 'value' => date('Y-m-d')],
             [['title'], 'string', 'max' => 255],
+            [['status'], 'integer']
         ];
     }
 
@@ -116,11 +117,6 @@ class Article extends \yii\db\ActiveRecord
         $tags = Tag::find()
             ->where(['id' => $tagsObj])
             ->all();
-
-//        var_dump(ArrayHelper::getColumn($tags, 'id')); die;
-//        var_dump($customer); die;
-
-//        return ArrayHelper::getColumn($tags, 'id');
           return $tags;
     }
 
@@ -143,7 +139,7 @@ class Article extends \yii\db\ActiveRecord
     }
 
     public static function getAll($pageSize = 6) {
-        $query = Article::find();
+        $query = Article::find()->where(['status'=>1]);
         $countQuery = clone $query;
         $pagination = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>$pageSize]);
         $articles = $query->offset($pagination->offset)
@@ -156,14 +152,15 @@ class Article extends \yii\db\ActiveRecord
         return $data;
     }
     public static function getPopular() {
-        return Article::find()->orderBy('viewed desc')->limit(3)->all();
+        return Article::find()->where(['status'=>1])->orderBy('viewed desc')->limit(3)->all();
     }
     public static function getRecent() {
-        return Article::find()->orderBy('date asc')->limit(4)->all();
+        return Article::find()->where(['status'=>1])->orderBy('date asc')->limit(4)->all();
     }
 
     public function saveArticle() {
         $this->user_id = Yii::$app->user->id;
+//        $this->status = Yii::$app->user->status;
         return $this->save();
     }
 }
