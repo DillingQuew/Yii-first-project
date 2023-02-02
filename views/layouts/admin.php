@@ -70,6 +70,29 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </footer>
 
 <?php $this->endBody() ?>
+<?php $this->registerJsFile('/ckeditor/ckeditor.js');?>;
+<?php $this->registerJsFile('/ckeditor/ckeditor.js');?>;
+<?php $this->registerJsFile('https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js');?>;
+
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        let editor = .replaceAll();-->
+<!--        CKFinder.setupCKEditor(editor);-->
+<!--    })-->
+<!--</script>-->
+<script type="text/javascript">
+    ClassicEditor
+
+        .create( document.querySelector( '.ckeditor' ), {
+            ckfinder: {
+                uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+            },
+            toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+        } )
+        .catch( function( error ) {
+            console.error( error );
+        } );
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

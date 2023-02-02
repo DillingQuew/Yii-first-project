@@ -125,6 +125,8 @@ class SiteController extends Controller
         $commentForm = new CommentForm();
         $tags = $article->articleTags();
 
+        $article->viewedCounter();
+
 
         return $this->render('single',
             ['article'=>$article,

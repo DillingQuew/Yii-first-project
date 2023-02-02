@@ -40,7 +40,7 @@ use yii\helpers\Url;
 
                         <div class="social-share">
 							<span
-                                class="social-share-title pull-left text-capitalize">By Rubel On <?= $article->getDate()?></span>
+                                class="social-share-title pull-left text-capitalize">By <?=$article->author->name?> On <?= $article->getDate()?></span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -51,14 +51,14 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 </article>
-                <div class="top-comment"><!--top comment-->
-                    <img src="/public/images/comment.jpg" class="pull-left img-circle" alt="">
-                    <h4>Rubel Miah</h4>
-
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                        invidunt ut labore et dolore magna aliquyam erat.</p>
-                </div><!--top comment end-->
-                <div class="row"><!--blog next previous-->
+<!--                <div class="top-comment">top comment-->
+<!--                    <img src="/public/images/comment.jpg" class="pull-left img-circle" alt="">-->
+<!--                    <h4>Rubel Miah</h4>-->
+<!---->
+<!--                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor-->
+<!--                        invidunt ut labore et dolore magna aliquyam erat.</p>-->
+<!--                </div>top comment end--
+                <div class="row">blog next previous-->
                     <div class="col-md-6">
                         <div class="single-blog-box">
                             <a href="#">
