@@ -181,4 +181,9 @@ class Article extends \yii\db\ActiveRecord
           return $this->save(false);
     }
 
+    public function getArticleCategories($model) {
+        $data['selectedCategory'] = $model->category->id;
+        $data['categories'] = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+        return $data;
+    }
 }

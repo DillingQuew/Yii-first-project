@@ -41,13 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img($data->getImage(),['width'=>200]);
                 }
             ],
-            //'image',
-            //'viewed',
-            //'user_id',
-            //'status',
-            //'category_id',
+
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
                 'urlCreator' => function ($action, Article $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
