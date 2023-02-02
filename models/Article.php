@@ -155,7 +155,7 @@ class Article extends \yii\db\ActiveRecord
         return Article::find()->where(['status'=>1])->orderBy('viewed desc')->limit(3)->all();
     }
     public static function getRecent() {
-        return Article::find()->where(['status'=>1])->orderBy('date asc')->limit(4)->all();
+        return Article::find()->where(['status'=>1])->orderBy('date desc')->limit(4)->all();
     }
 
     public function saveArticle() {
@@ -182,7 +182,7 @@ class Article extends \yii\db\ActiveRecord
     }
 
     public function getArticleCategories($model) {
-        $data['selectedCategory'] = $model->category->id;
+//        $data['selectedCategory'] = $model->category->id;
         $data['categories'] = ArrayHelper::map(Category::find()->all(), 'id', 'title');
         return $data;
     }

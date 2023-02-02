@@ -1,0 +1,4 @@
+.container-limiter {
+    max-width: 1200px; !important;
+    word-break: break-all; !important;
+}

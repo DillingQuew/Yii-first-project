@@ -77,7 +77,8 @@ class ArticleController extends Controller
 
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->saveArticle()) {
+            $category = Yii::$app->request->post('Article')['category'];
+            if ($model->load($this->request->post()) && $model->saveArticle() && $model -> saveCategory($category)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -100,7 +101,6 @@ class ArticleController extends Controller
     {
         $model = $this->findModel($id);
 
-        $data = $model->getArticleCategories($model);
 
         if ($this->request->isPost) {
             $category = Yii::$app->request->post('Article')['category'];
@@ -119,29 +119,29 @@ class ArticleController extends Controller
         ]);
     }
 
-//    public function actionSetCategory($id) {
-//        $article = $this->findModel($id);
-//
-//        $selectedCategory = $article->category->id;
-//        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
-////---------------------------------
-//        /*
-//         * Перенеси этот кусок кода в модель
-//         */
-//        if(Yii::$app->request->isPost) {
-//            $category = Yii::$app->request->post('category');
-//            var_dump($category); die;
-//            if( $article -> saveCategory($category)) {
-//                return $this->redirect(['view', 'id' => $article->id]);
-//            }
-//        }
+    public function actionSetCategory($id) {
+        $article = $this->findModel($id);
+
+        $selectedCategory = $article->category->id;
+        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+//---------------------------------
+        /*
+         * Перенеси этот кусок кода в модель
+         */
+        if(Yii::$app->request->isPost) {
+            $category = Yii::$app->request->post('category');
+            var_dump($category); die;
+            if( $article -> saveCategory($category)) {
+                return $this->redirect(['view', 'id' => $article->id]);
+            }
+        }
 //----------------------
-//        return $this->render('category', [
-//            'article' => $article,
-//            'selectedCategory' => $selectedCategory,
-//            'categories' => $categories
-//        ]);
-//    }
+        return $this->render('category', [
+            'article' => $article,
+            'selectedCategory' => $selectedCategory,
+            'categories' => $categories
+        ]);
+    }
 
     /**
      * Deletes an existing Article model.

@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="article-form">
 <?php     $data = $model->getArticleCategories($model);?>
+<?php //    $data = $model->getCategory();?>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -23,6 +24,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'status')->checkbox() ?>
 
     <?= $form->field($model,'category')->dropDownList($data['categories']) ?>
+<!--    --><?php //= var_dump($data['categories']);?>
 
 
 

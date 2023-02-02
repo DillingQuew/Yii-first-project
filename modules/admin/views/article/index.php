@@ -12,6 +12,8 @@ use yii\grid\GridView;
 
 $this->title = 'Articles';
 $this->params['breadcrumbs'][] = $this->title;
+use app\assets\AppAsset;
+AppAsset::register($this);
 ?>
 <div class="article-index">
 
@@ -21,7 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Article', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

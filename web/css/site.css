@@ -2,6 +2,8 @@ main > .container {
     padding: 70px 15px 20px;
 }
 
+
+
 .footer {
     background-color: #f5f5f5;
     font-size: .9em;
@@ -81,4 +83,10 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.container-limiter {
+    word-break: break-all; !important;
+    max-width: 100%; !important;
+    width: auto;
 }
