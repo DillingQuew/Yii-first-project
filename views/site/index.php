@@ -9,13 +9,13 @@ use yii\widgets\LinkPager;
 $this->title = 'My Yii Application';
 ?>
 <!--main content start-->
-<div class="main-content">
+<div class="main-content main-content__dark">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
 
                 <?php foreach($articles as $article):?>
-                    <article class="post">
+                    <article class="post dark-wrapper">
                         <div class="post-thumb">
                             <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]); ?>"><img src="<?= $article->getImage(); ?>" alt=""></a>
 
@@ -28,20 +28,20 @@ $this->title = 'My Yii Application';
 
                                 <h6><a href="<?= Url::toRoute(['site/category', 'id'=>$article->category->id]); ?>"><?= $article->category->title; ?></a></h6>
 
-                                <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]); ?>"><?= $article->title ?> </a></h1>
+                                <h1 class="entry-title entry-title__dark-link"><a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]); ?>"><?= $article->title ?> </a></h1>
 
 
                             </header>
-                            <div class="entry-content">
+                            <div class="entry-content entry-content__dark">
                                 <p>
                                     <?= $article->description?>
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]); ?>" class="more-link">Continue Reading</a>
+                                    <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]); ?>" class="more-link more-link__dark">Continue Reading</a>
                                 </div>
                             </div>
-                            <div class="social-share">
+                            <div class="social-share social-share__dark">
                                 <span class="social-share-title pull-left text-capitalize">By <?=$article->author->name?> On <?= $article->getDate();?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?= (int)$article->viewed?>

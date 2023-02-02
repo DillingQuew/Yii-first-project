@@ -14,6 +14,7 @@ use yii\helpers\Url;
 
 PublicAsset::register($this);
 
+
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
@@ -31,7 +32,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
-<nav class="navbar main-menu navbar-default">
+<nav class="  navbar main-menu navbar-default  main-menu__dark">
     <div class="container">
         <div class="menu-content">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,19 +44,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="public/images/logo.jpg" alt=""></a>
+                <a class="navbar-brand" href="/"><p class="logo">T</p></a>
             </div>
-
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav text-uppercase">
-                    <li><a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
-
+            <div class=" flex-center" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav text-uppercase ">
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/">Home</a>
                     </li>
                 </ul>
                 <div class="i_con">
-                    <ul class="nav navbar-nav text-uppercase">
+                    <ul class="nav navbar-nav text-uppercase ">
                         <?php if(Yii::$app->user->isGuest):?>
                         <li><a href="<?= Url::toRoute(['auth/login']) ?>">Login</a></li>
                         <li><a href="<?= Url::toRoute(['auth/singup']) ?>">Register</a></li>

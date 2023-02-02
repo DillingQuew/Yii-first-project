@@ -1,5 +1,5 @@
 <div class="primary-sidebar">
-    <aside class="widget">
+    <aside class="widget dark-wrapper">
         <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
         <?php use yii\helpers\Url;
 
@@ -20,7 +20,7 @@
             </div>
         <?php endforeach;?>
     </aside>
-    <aside class="widget pos-padding">
+    <aside class="widget pos-padding dark-wrapper">
         <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>
 
         <?php foreach($recent as $article): ?>
@@ -41,7 +41,7 @@
             </div>
         <?php endforeach; ?>
     </aside>
-    <aside class="widget border pos-padding">
+    <aside class="widget border pos-padding dark-wrapper">
         <h3 class="widget-title text-uppercase text-center">Categories</h3>
         <ul>
             <?php foreach($categories as $category):?>

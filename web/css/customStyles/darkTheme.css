@@ -1,0 +1,127 @@
+:root {
+    --light-dark: #333333;
+    --deep-dark: rgba(20,20,20,255);
+    --color-link: #00acdf;
+}
+* {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+}
+textarea, input {
+    background-color: gray !important;
+    border-radius: 20px !important;
+    color: whitesmoke !important;
+    max-width: 100%;
+
+}
+
+.category-post__dark {
+    padding: 20px !important;
+}
+
+.post-content__dark h6 {
+    margin-top: 0 !important;
+}
+.post-content__dark header {
+    margin-top: 35px !important;
+}
+
+.row-delimeter > .col-md-6 {
+    border-left: 1px solid gray !important;
+}
+
+table * {
+    border-color: whitesmoke !important;
+    color: whitesmoke !important;
+
+}
+table {
+    border-radius: 15px !important;
+}
+
+
+textarea {
+    max-height: 600px;
+}
+.btn {
+    border-radius: 20px !important;
+}
+
+.btn-default {
+    background-color: transparent !important;
+}
+textarea::placeholder {
+    color: ghostwhite !important;
+}
+/************************************main page*/
+body {
+    background-color: var(--deep-dark) !important;
+}
+
+.main-menu__dark {
+    background-color: var(--light-dark) !important;
+    border-color:  var(--light-dark) !important;
+}
+
+.main-content__dark {
+    background-color:  var(--deep-dark) !important;
+}
+
+.logo {
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+    font-size: 38px !important;
+    line-height: 1 !important;
+    color: lightgray !important;
+}
+
+.dark-wrapper {
+    background-color: var(--light-dark) !important;
+    border-color: gray !important;
+    border-radius: 20px !important;
+    border-width: 2px !important;
+    overflow: hidden !important;
+}
+.dark-wrapper a {
+    color: var(--color-link) !important;
+}
+
+
+.dark-wrapper h3, span, h1, h2, h3, h4, h5, p{
+    color: whitesmoke !important;
+}
+
+/*.dark-wrapper span {*/
+/*    color: whitesmoke !important;*/
+/*}*/
+.post__dark > * {
+    border-color: gray !important;
+}
+
+.entry-title__dark-link > a{
+    color: var(--color-link) !important;
+}
+
+.entry-content__dark > p{
+    color: whitesmoke !important;
+}
+
+.more-link__dark {
+    border-radius: 20px !important;
+}
+
+.social-share__dark > *{
+    color: whitesmoke !important;
+}
+/**************************************widget*/
+
+.sidebar__dark {
+
+}
+
+@media (min-width: 768px) {
+
+    .flex-center {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+}
